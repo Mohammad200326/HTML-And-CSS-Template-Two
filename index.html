@@ -21,6 +21,10 @@
           color: var(--main-color);
           border-bottom: 1px solid var(--main-color);
         }
+        .active-bullet.active {
+          background-color: var(--main-color);
+          border-color: var(--main-color);
+        }
         .custom-container {
           @apply px-[15px] mx-auto sm:w-[750px] md:w-[970px] lg:w-[1170px];
         }
@@ -110,15 +114,19 @@
     </header>
     <!-- End Header -->
     <!-- Start Landing -->
-    <div class="landing">
-      <div class="overlay"></div>
-      <div class="text">
-        <div class="content">
-          <h2>
+    <div class="min-h-screen bg-[#1f2021] bg-[url(./images/landing.jpg)]">
+      <div
+        class="absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.6)]"
+      ></div>
+      <div
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full md:w-1/2 p-[50px] bg-[var(--transparent-color)] text-white flex justify-end"
+      >
+        <div class="max-w-full md:max-w-[500px]">
+          <h2 class="text-[32px] font-normal leading-[1.6] mb-[20px]">
             Hello World!<br />
             We Are Kasper We Make Art.
           </h2>
-          <p>
+          <p class="text-[14px] leading-[2]">
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
             Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
             Curabitur aliquet quam. Accumsan id imperdiet et, porttitor at sem.
@@ -126,12 +134,24 @@
           </p>
         </div>
       </div>
-      <i class="fas fa-angle-left change-background fa-2x"></i>
-      <i class="fas fa-angle-right change-background fa-2x"></i>
-      <ul class="bullets">
-        <li></li>
-        <li class="active"></li>
-        <li></li>
+      <i
+        class="fas fa-angle-left absolute hidden md:top-1/2 md:transform md:-translate-y-1/2 md:text-[#ddd] fa-2x left-[30px]"
+      ></i>
+      <i
+        class="fas fa-angle-right absolute hidden md:top-1/2 md:transform md:-translate-y-1/2 md:text-[#ddd] fa-2x right-[30px]"
+      ></i>
+      <ul
+        class="absolute left-1/2 transform -translate-x-1/2 bottom-[30px] flex justify-around items-center"
+      >
+        <li
+          class="w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
+        <li
+          class="active w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
+        <li
+          class="w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
       </ul>
     </div>
     <!-- End Landing -->
