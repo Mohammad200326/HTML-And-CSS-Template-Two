@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-
     <!-- Custom CSS -->
     <style type="text/tailwindcss">
       @layer utilities {
@@ -16,30 +14,104 @@
           --transparent-color: rgba(15, 116, 143, 70%);
           --section-padding: 100px;
         }
-        .hover-main-color:hover,
-        .active-main-color.active {
-          color: var(--main-color);
-          border-bottom: 1px solid var(--main-color);
-        }
-        .active-bullet.active {
-          background-color: var(--main-color);
-          border-color: var(--main-color);
-        }
-        .active-shuffle-li.active {
-          background-color: var(--main-color);
-          color: white;
-        }
-        .custom-container {
+        /* Start Global Rules */
+        .container {
           @apply px-[15px] mx-auto sm:w-[750px] md:w-[970px] lg:w-[1170px];
         }
+        /* End Global Rules */
+        /* Start Components */
+        .main-heading {
+          @apply text-center;
+        }
+        .main-heading h2 {
+          @apply font-normal text-[40px] relative mb-[70px] uppercase;
+        }
+        .main-heading h2::before {
+          content: "";
+          @apply absolute left-1/2 transform -translate-x-1/2 h-[2px] bg-[#333] -bottom-[30px] w-[120px];
+        }
+        .main-heading h2::after {
+          content: "";
+          @apply absolute left-1/2 transform -translate-x-1/2 w-[14px] h-[14px] rounded-full border border-2 border-[#333] -bottom-[38px] bg-white;
+        }
+        .main-heading p {
+          @apply w-[550px] mx-auto mb-[100px] max-w-full leading-loose text-[#777];
+        }
+        /* End Components */
+        /* Start Custom selectors and styles not directly supported by Tailwind */
+        .hover-main-color:hover,
+        .active-main-color.active {
+          @apply text-[var(--main-color)] border-b border-b-[var(--main-color)];
+        }
+        .active-bullet.active {
+          @apply bg-[var(--main-color)] border border-[var(--main-color)];
+        }
+        .active-shuffle-li.active {
+          @apply bg-[var(--main-color)] text-white;
+        }
+        header .container::after {
+          content: "";
+          @apply absolute h-[1px] bg-[#a2a2a2] bottom-0 w-[calc(100%-30px)] left-[15px];
+        }
+        @media (max-width: 767px) {
+          header nav .toggle-menu:hover + ul {
+            @apply flex flex-col absolute top-full left-0 w-full bg-[rgba(0,0,0,50%)];
+          }
+        }
+        .design::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,60%)];
+        }
+        .design .text ul li::before {
+          font-family: "Font Awesome 5 Free";
+          content: "\f108";
+          @apply font-black mr-[20px] relative top-[1px];
+        }
+        .video::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,40%)];
+        }
+        .stats::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,70%)];
+        }
+        .our-skills .skills .prog-holder .prog span::before {
+          content: attr(data-progress);
+          @apply absolute bg-black text-white -top-[40px] -right-[18px] py-[4px] w-[40px] text-center rounded-[4px];
+        }
+        .our-skills .skills .prog-holder .prog span::after {
+          content: "";
+          @apply absolute border border-8 border-t-[black] border-r-transparent border-b-transparent border-l-transparent -right-[7px] -top-[15px];
+        }
+        .quote::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,75%)];
+        }
+        .pricing .plans .plan .head span::before {
+          content: "$";
+          @apply text-[25px] relative -top-[40px] mr-[15px] font-normal;
+        }
+        .pricing .plans .plan .head span::after {
+          content: "/Mo";
+          @apply text-[20px] relative -right-[15px];
+        }
+        .pricing .plans .plan ul li:not(:last-child)::after {
+          content: "";
+          @apply w-[140px] h-[1px] bg-[var(--main-color)] absolute left-1/2 transform -translate-x-1/2 bottom-0;
+        }
+        .subscribe::before {
+          content: "";
+          @apply absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,50%)];
+        }
+        .footer::before {
+          content: "";
+          @apply absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,70%)];
+        }
+        /* End Custom selectors and styles not directly supported by Tailwind */
       }
     </style>
-    <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="css/normalize.css" />
     <!-- Font Awesome Library -->
     <link rel="stylesheet" href="css/all.min.css" />
-    <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="css/kasper.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,7 +125,7 @@
     <!-- Start Header -->
     <header class="absolute left-0 w-full z-[2]">
       <div
-        class="custom-container flex justify-between items-center relative min-h-[97px]"
+        class="container flex justify-between items-center relative min-h-[97px]"
       >
         <a href="#">
           <img src="images/logo.png" class="h-[40px]" alt="Logo" />
