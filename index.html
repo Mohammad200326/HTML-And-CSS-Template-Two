@@ -25,6 +25,10 @@
           background-color: var(--main-color);
           border-color: var(--main-color);
         }
+        .active-shuffle-li.active {
+          background-color: var(--main-color);
+          color: white;
+        }
         .custom-container {
           @apply px-[15px] mx-auto sm:w-[750px] md:w-[970px] lg:w-[1170px];
         }
@@ -263,7 +267,7 @@
     </div>
     <!-- End Design -->
     <!-- Start Portfolio -->
-    <div class="portfolio" id="portfolio">
+    <div class="portfolio py-[var(--section-padding)]" id="portfolio">
       <div class="container">
         <div class="main-heading">
           <h2>PORTFOLIO</h2>
@@ -272,73 +276,125 @@
             Mauris blandit aliquet elit, eget tincidunt.
           </p>
         </div>
-        <ul class="shuffle">
-          <li class="active">All</li>
-          <li>App</li>
-          <li>Photo</li>
-          <li>Web</li>
-          <li>Print</li>
+        <ul class="shuffle flex justify-center">
+          <li class="active p-[10px] active-shuffle-li">All</li>
+          <li class="p-[10px]">App</li>
+          <li class="p-[10px]">Photo</li>
+          <li class="p-[10px]">Web</li>
+          <li class="p-[10px]">Print</li>
         </ul>
       </div>
-      <div class="imgs-container">
-        <div class="box">
-          <img src="images/shuffle-01.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+      <div class="flex flex-wrap mt-[60px]">
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-01.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-02.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-02.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-03.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-03.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-04.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-04.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-05.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-05.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-06.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-06.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-07.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-07.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
-        <div class="box">
-          <img src="images/shuffle-08.jpg" alt="" />
-          <div class="caption">
-            <h4>Awesome Image</h4>
-            <p>Photography</p>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-08.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
           </div>
         </div>
       </div>
-      <a href="#" class="more">More</a>
+      <a
+        href="#"
+        class="!bg-[var(--main-color)] text-white py-[15px] px-[20px] block w-fit my-[30px] mx-auto no-underline uppercase"
+        >More</a
+      >
     </div>
     <!-- End Portfolio -->
     <!-- Start Video -->
