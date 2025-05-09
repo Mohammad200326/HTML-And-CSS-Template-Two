@@ -702,14 +702,27 @@
     </div>
     <!-- End Pricing -->
     <!-- Start Subscribe -->
-    <div class="subscribe">
-      <div class="container">
-        <form action="">
-          <i class="far fa-envelope fa-lg"></i>
-          <input type="email" name="mail" placeholder="Your Email" />
-          <input type="submit" value="Subscribe" />
+    <div
+      class="subscribe py-[var(--section-padding)] bg-[url(./images/subscribe.jpg)] bg-cover relative text-white"
+    >
+      <div class="container relative flex items-center max-lg:flex-col">
+        <form action="" class="flex relative w-[500px] max-w-full">
+          <i
+            class="far fa-envelope fa-lg absolute top-1/2 transform -translate-y-1/2 left-[25px]"
+          ></i>
+          <input
+            type="email"
+            name="mail"
+            placeholder="Your Email"
+            class="placeholder-white focus:outline-none border border-white border-r-0 bg-none py-[20px] pr-[20px] pl-[60px] caret-[var(--main-color)] w-[calc(100%-130px)]"
+          />
+          <input
+            type="submit"
+            value="Subscribe"
+            class="focus-outline-none w-[130px] bg-[var(--main-color)] text-white py-[10px] px-[20px] border border-white border-l-0 uppercase"
+          />
         </form>
-        <p>
+        <p class="leading-loose ml-[50px] max-lg:mt-[30px] max-lg:text-center">
           Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
           Mauris blan dit aliquet elit, eget tincidunt.
         </p>
