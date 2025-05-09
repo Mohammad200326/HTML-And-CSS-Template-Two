@@ -730,7 +730,7 @@
     </div>
     <!-- End Subscribe -->
     <!-- Start Contact -->
-    <div class="contact" id="contact">
+    <div class="contact py-[var(--section-padding)]" id="contact">
       <div class="container">
         <div class="main-heading">
           <h2>Contact Us</h2>
@@ -739,33 +739,43 @@
             Mauris blandit aliquet elit, eget tincidunt.
           </p>
         </div>
-        <div class="content">
-          <form action="">
+        <div class="flex justify-between max-sm:flex-col">
+          <form action="" class="basis-[70%]">
             <input
-              class="main-input"
+              class="focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
               type="text"
               name="name"
               placeholder="Your Name"
             />
             <input
-              class="main-input"
+              class="focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
               type="email"
               name="mail"
               placeholder="Your Email"
             />
             <textarea
-              class="main-input"
+              class="h-[200px] focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
               name="message"
               placeholder="Your Message"
             ></textarea>
-            <input type="submit" value="Send Message" />
+            <input
+              type="submit"
+              value="Send Message"
+              class="bg-[var(--main-color)] text-white p-[20px] border-none flex !ml-auto uppercase cursor-pointer max-sm:!mr-auto"
+            />
           </form>
-          <div class="info">
-            <h4>Get In Touch</h4>
-            <span class="phone">+00 123.456.789</span>
-            <span class="phone">+00 123.456.789</span>
-            <h4>Where We Are</h4>
-            <address>
+          <div class="basis-1/4 max-sm:order-first max-sm:text-center">
+            <h4 class="uppercase mb-[30px] font-medium text-[18px]">
+              Get In Touch
+            </h4>
+            <span class="block text-[#777] mb-[10px]">+00 123.456.789</span>
+            <span class="block text-[#777] mb-[10px]">+00 123.456.789</span>
+            <h4
+              class="uppercase mb-[30px] font-medium text-[18px] mt-[90px] max-sm:mt-[30px]"
+            >
+              Where We Are
+            </h4>
+            <address class="text-[#777] leading-loose max-sm:mb-[40px]">
               Awesome Address 17<br />New York, NYC<br />123-4567-890<br />USA
             </address>
           </div>
