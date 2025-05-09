@@ -398,14 +398,22 @@
     </div>
     <!-- End Portfolio -->
     <!-- Start Video -->
-    <div class="video">
-      <video autoplay muted loop>
+    <div class="video relative">
+      <video autoplay muted loop class="w-full">
         <source src="images/awesome-video.mp4" type="video/mp4" />
       </video>
-      <div class="text">
-        <h2>Super Awesome Video Here</h2>
-        <p>Its All You Need</p>
-        <button>See More</button>
+      <div
+        class="w-full absolute top-1/2 transform -translate-y-1/2 p-[50px] bg-[var(--transparent-color)] text-white text-center max-sm:p-0"
+      >
+        <h2 class="mb-[30px] uppercase font-normal max-sm:my-[15px]">
+          Super Awesome Video Here
+        </h2>
+        <p class="mb-[30px] max-sm:mb-[20px]">Its All You Need</p>
+        <button
+          class="bg-black text-white py-[10px] px-[20px] border-none !uppercase max-sm:!mb-[15px]"
+        >
+          See More
+        </button>
       </div>
     </div>
     <!-- End Video -->
