@@ -1,435 +1,884 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="css/normalize.css">
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        :root {
+          --main-color: #19c8fa;
+          --transparent-color: rgba(15, 116, 143, 70%);
+          --section-padding: 100px;
+        }
+        /* Start Global Rules */
+        .container {
+          @apply px-[15px] mx-auto sm:w-[750px] md:w-[970px] lg:w-[1170px];
+        }
+        /* End Global Rules */
+        /* Start Components */
+        .main-heading {
+          @apply text-center;
+        }
+        .main-heading h2 {
+          @apply font-normal text-[40px] relative mb-[70px] uppercase;
+        }
+        .main-heading h2::before {
+          content: "";
+          @apply absolute left-1/2 transform -translate-x-1/2 h-[2px] bg-[#333] -bottom-[30px] w-[120px];
+        }
+        .main-heading h2::after {
+          content: "";
+          @apply absolute left-1/2 transform -translate-x-1/2 w-[14px] h-[14px] rounded-full border border-2 border-[#333] -bottom-[38px] bg-white;
+        }
+        .main-heading p {
+          @apply w-[550px] mx-auto mb-[100px] max-w-full leading-loose text-[#777];
+        }
+        /* End Components */
+        /* Start Custom selectors and styles not directly supported by Tailwind */
+        .hover-main-color:hover,
+        .active-main-color.active {
+          @apply text-[var(--main-color)] border-b border-b-[var(--main-color)];
+        }
+        .active-bullet.active {
+          @apply bg-[var(--main-color)] border border-[var(--main-color)];
+        }
+        .active-shuffle-li.active {
+          @apply bg-[var(--main-color)] text-white;
+        }
+        header .container::after {
+          content: "";
+          @apply absolute h-[1px] bg-[#a2a2a2] bottom-0 w-[calc(100%-30px)] left-[15px];
+        }
+        @media (max-width: 767px) {
+          header nav .toggle-menu:hover + ul {
+            @apply flex flex-col absolute top-full left-0 w-full bg-[rgba(0,0,0,50%)];
+          }
+        }
+        .design::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,60%)];
+        }
+        .design .text ul li::before {
+          font-family: "Font Awesome 5 Free";
+          content: "\f108";
+          @apply font-black mr-[20px] relative top-[1px];
+        }
+        .video::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,40%)];
+        }
+        .stats::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,70%)];
+        }
+        .our-skills .skills .prog-holder .prog span::before {
+          content: attr(data-progress);
+          @apply absolute bg-black text-white -top-[40px] -right-[18px] py-[4px] w-[40px] text-center rounded-[4px];
+        }
+        .our-skills .skills .prog-holder .prog span::after {
+          content: "";
+          @apply absolute border border-8 border-t-[black] border-r-transparent border-b-transparent border-l-transparent -right-[7px] -top-[15px];
+        }
+        .quote::before {
+          content: "";
+          @apply absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,75%)];
+        }
+        .pricing .plans .plan .head span::before {
+          content: "$";
+          @apply text-[25px] relative -top-[40px] mr-[15px] font-normal;
+        }
+        .pricing .plans .plan .head span::after {
+          content: "/Mo";
+          @apply text-[20px] relative -right-[15px];
+        }
+        .pricing .plans .plan ul li:not(:last-child)::after {
+          content: "";
+          @apply w-[140px] h-[1px] bg-[var(--main-color)] absolute left-1/2 transform -translate-x-1/2 bottom-0;
+        }
+        .subscribe::before {
+          content: "";
+          @apply absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,50%)];
+        }
+        .footer::before {
+          content: "";
+          @apply absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,70%)];
+        }
+        /* End Custom selectors and styles not directly supported by Tailwind */
+      }
+    </style>
     <!-- Font Awesome Library -->
-    <link rel="stylesheet" href="css/all.min.css">
-    <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="css/kasper.css">
+    <link rel="stylesheet" href="css/all.min.css" />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <title>Kasper | Template Two</title>
-</head>
-<body>
+  </head>
+  <body class="font-[Open_Sans]">
     <!-- Start Header -->
-    <header>
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="Logo">
-            </a>
-            <nav>
-                <i class="fas fa-bars toggle-menu"></i>
-                <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="form">
-                    <i class="fas fa-search"></i>
-                </div>
-            </nav>
-        </div>
+    <header class="absolute left-0 w-full z-[2]">
+      <div
+        class="container flex justify-between items-center relative min-h-[97px]"
+      >
+        <a href="#">
+          <img src="images/logo.png" class="h-[40px]" alt="Logo" />
+        </a>
+        <nav class="flex flex-1 justify-end items-center group">
+          <i
+            class="fas fa-bars toggle-menu text-white text-[22px] md:!hidden"
+          ></i>
+          <ul class="list-none hidden md:flex">
+            <li>
+              <a
+                class="active md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#services"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#portfolio"
+                >Portfolio</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#about"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#pricing"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:px-[10px] md:py-[40px] p-[15px] block text-white no-underline text-[14px] transition duration-300 relative z-[2] hover-main-color active-main-color"
+                href="#contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+          <div
+            class="w-[40px] h-[30px] relative ml-[30px] border-l border-white"
+          >
+            <i
+              class="fas fa-search text-white absolute text-[20px] top-1/2 transform -translate-y-1/2 right-0"
+            ></i>
+          </div>
+        </nav>
+      </div>
     </header>
     <!-- End Header -->
     <!-- Start Landing -->
-    <div class="landing">
-        <div class="overlay"></div>
-        <div class="text">
-            <div class="content">
-                <h2>Hello World!<br>
-                    We Are Kasper We Make Art.</h2>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam. Accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
+    <div
+      class="landing min-h-screen bg-[#1f2021] bg-[url(./images/landing.jpg)]"
+    >
+      <div
+        class="absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.6)]"
+      ></div>
+      <div
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full md:w-1/2 p-[50px] bg-[var(--transparent-color)] text-white flex justify-end"
+      >
+        <div class="max-w-full md:max-w-[500px]">
+          <h2 class="text-[32px] font-normal leading-[1.6] mb-[20px]">
+            Hello World!<br />
+            We Are Kasper We Make Art.
+          </h2>
+          <p class="text-[14px] leading-[2]">
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+            Curabitur aliquet quam. Accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
         </div>
-        <i class="fas fa-angle-left change-background fa-2x"></i>
-        <i class="fas fa-angle-right change-background fa-2x"></i>
-        <ul class="bullets">
-            <li></li>
-            <li class="active"></li>
-            <li></li>
-        </ul>
+      </div>
+      <i
+        class="fas fa-angle-left absolute hidden md:top-1/2 md:transform md:-translate-y-1/2 md:text-[#ddd] fa-2x left-[30px]"
+      ></i>
+      <i
+        class="fas fa-angle-right absolute hidden md:top-1/2 md:transform md:-translate-y-1/2 md:text-[#ddd] fa-2x right-[30px]"
+      ></i>
+      <ul
+        class="absolute left-1/2 transform -translate-x-1/2 bottom-[30px] flex justify-around items-center"
+      >
+        <li
+          class="w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
+        <li
+          class="active w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
+        <li
+          class="w-[20px] h-[20px] border border-solid border-white mr-[10px] rounded-[50%] active-bullet"
+        ></li>
+      </ul>
     </div>
     <!-- End Landing -->
     <!-- Start Services -->
-    <div class="services">
-        <div class="container">
-            <div class="main-heading">
-                <h2>Services</h2>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
-            <div class="services-container">
-                <div class="srv-box">
-                    <i class="fas fa-desktop fa-3x"></i>
-                    <div class="text">
-                        <h3>Vorem amet intuitive</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
-                    </div>
-                </div>
-                <div class="srv-box">
-                    <i class="fas fa-cog fa-3x"></i>
-                    <div class="text">
-                        <h3>Vorem amet intuitive</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
-                    </div>
-                </div>
-                <div class="srv-box">
-                    <i class="fas fa-pencil-ruler fa-3x"></i>
-                    <div class="text">
-                        <h3>Vorem amet intuitive</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
-                    </div>
-                </div>
-                <div class="srv-box">
-                    <i class="fas fa-camera fa-3x"></i>
-                    <div class="text">
-                        <h3>Vorem amet intuitive</h3>
-                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="services py-[var(--section-padding)]" id="services">
+      <div class="container">
+        <div class="main-heading">
+          <h2>Services</h2>
+          <p>
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
         </div>
+        <div
+          class="md:grid md:grid-cols-[repeat(auto-fill,minmax(450px,1fr))] md:gap-x-[40px] md:gap-y-[60px]"
+        >
+          <div
+            class="flex flex-col md:flex-row text-center md:text-left mb-[40px] md:mb-0"
+          >
+            <i class="fas fa-desktop fa-3x mr-0 mb-[30px] md:mr-[50px]"></i>
+            <div class="text">
+              <h3 class="mb-[30px] text-[var(--main-color)]">
+                Vorem amet intuitive
+              </h3>
+              <p class="leading-[2] text-[#777]">
+                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                Curabitur aliquet quam.
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row text-center md:text-left mb-[40px] md:mb-0"
+          >
+            <i class="fas fa-cog fa-3x mr-0 mb-[30px] md:mr-[50px]"></i>
+            <div class="text">
+              <h3 class="mb-[30px] text-[var(--main-color)]">
+                Vorem amet intuitive
+              </h3>
+              <p class="leading-[2] text-[#777]">
+                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                Curabitur aliquet quam.
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row text-center md:text-left mb-[40px] md:mb-0"
+          >
+            <i
+              class="fas fa-pencil-ruler fa-3x mr-0 mb-[30px] md:mr-[50px]"
+            ></i>
+            <div class="text">
+              <h3 class="mb-[30px] text-[var(--main-color)]">
+                Vorem amet intuitive
+              </h3>
+              <p class="leading-[2] text-[#777]">
+                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                Curabitur aliquet quam.
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row text-center md:text-left mb-[40px] md:mb-0"
+          >
+            <i class="fas fa-camera fa-3x mr-0 mb-[30px] md:mr-[50px]"></i>
+            <div class="text">
+              <h3 class="mb-[30px] text-[var(--main-color)]">
+                Vorem amet intuitive
+              </h3>
+              <p class="leading-[2] text-[#777]">
+                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                Curabitur aliquet quam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Services -->
     <!-- Start Design -->
-    <div class="design">
-        <div class="image">
-            <img src="images/mobile.png" alt="Mobile">
-        </div>
-        <div class="text">
-            <h2>OUR DESIGN COMES WITH...</h2>
-            <ul>
-                <li>Responsive Design</li>
-                <li>Modern And Clean Design</li>
-                <li>Clean Code</li>
-                <li>Browser Friendly</li>
-            </ul>
-        </div>
+    <div
+      class="design p-y-[var(--section-padding)] h-[600px] relative bg-[url(./images/design-features.jpg)] bg-cover flex items-center overflow-hidden"
+    >
+      <div class="max-sm:hidden text-center relative z-[2] flex-1">
+        <img
+          src="images/mobile.png"
+          alt="Mobile"
+          class="relative bottom-[-150px]"
+        />
+      </div>
+      <div
+        class="text text-white p-[50px] bg-[var(--transparent-color)] relative z-[2] flex-1"
+      >
+        <h2 class="font-normal uppercase mb-[40px]">
+          OUR DESIGN COMES WITH...
+        </h2>
+        <ul class="list-none">
+          <li class="py-[15px]">Responsive Design</li>
+          <li class="py-[15px]">Modern And Clean Design</li>
+          <li class="py-[15px]">Clean Code</li>
+          <li class="py-[15px]">Browser Friendly</li>
+        </ul>
+      </div>
     </div>
     <!-- End Design -->
     <!-- Start Portfolio -->
-    <div class="portfolio">
-        <div class="container">
-            <div class="main-heading">
-            <h2>PORTFOLIO</h2>
-            <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
-            <ul class="shuffle">
-                <li class="active">All</li>
-                <li>App</li>
-                <li>Photo</li>
-                <li>Web</li>
-                <li>Print</li>
-            </ul>
+    <div class="portfolio py-[var(--section-padding)]" id="portfolio">
+      <div class="container">
+        <div class="main-heading">
+          <h2>PORTFOLIO</h2>
+          <p>
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
         </div>
-        <div class="imgs-container">
-            <div class="box">
-                <img src="images/shuffle-01.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-02.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-03.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-04.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-05.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-06.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-07.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/shuffle-08.jpg" alt="">
-                <div class="caption">
-                    <h4>Awesome Image</h4>
-                    <p>Photography</p>
-                </div>
-            </div>
+        <ul class="shuffle flex justify-center">
+          <li class="active p-[10px] active-shuffle-li">All</li>
+          <li class="p-[10px]">App</li>
+          <li class="p-[10px]">Photo</li>
+          <li class="p-[10px]">Web</li>
+          <li class="p-[10px]">Print</li>
+        </ul>
+      </div>
+      <div class="flex flex-wrap mt-[60px]">
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-01.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
         </div>
-        <a href="#" class="more">More</a>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-02.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-03.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-04.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-05.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-06.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-07.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden md:basis-1/2 lg:basis-1/4 group">
+          <img
+            src="images/shuffle-08.jpg"
+            alt=""
+            class="m-w-full transition duration-300 group-hover:transform group-hover:rotate-3 group-hover:scale-110"
+          />
+          <div
+            class="absolute left-0 p-[20px] bg-white w-full transition-all duration-300 -bottom-full group-hover:bottom-0"
+          >
+            <h4 class="font-normal mb-[10px]">Awesome Image</h4>
+            <p class="text-[var(--main-color)]">Photography</p>
+          </div>
+        </div>
+      </div>
+      <a
+        href="#"
+        class="!bg-[var(--main-color)] text-white py-[15px] px-[20px] block w-fit my-[30px] mx-auto no-underline uppercase"
+        >More</a
+      >
     </div>
     <!-- End Portfolio -->
     <!-- Start Video -->
-    <div class="video">
-        <video autoplay muted loop>
-            <source src="images/awesome-video.mp4" type="video/mp4">
-        </video>
-        <div class="text">
-            <h2>Super Awesome Video Here</h2>
-            <p>Its All You Need</p>
-            <button>See More</button>
-        </div>
+    <div class="video relative">
+      <video autoplay muted loop class="w-full">
+        <source src="images/awesome-video.mp4" type="video/mp4" />
+      </video>
+      <div
+        class="w-full absolute top-1/2 transform -translate-y-1/2 p-[50px] bg-[var(--transparent-color)] text-white text-center max-sm:p-0"
+      >
+        <h2 class="mb-[30px] uppercase font-normal max-sm:my-[15px]">
+          Super Awesome Video Here
+        </h2>
+        <p class="mb-[30px] max-sm:mb-[20px]">Its All You Need</p>
+        <button
+          class="bg-black text-white py-[10px] px-[20px] border-none !uppercase max-sm:!mb-[15px]"
+        >
+          See More
+        </button>
+      </div>
     </div>
     <!-- End Video -->
     <!-- Start About -->
-    <div class="about">
-        <div class="container">
-            <div class="main-heading">
-                <h2>About Us</h2>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
-        </div>    
-        <img src="images/about.png" alt="">
+    <div
+      class="about pt-[var(--section-padding)] overflow-hidden text-center"
+      id="about"
+    >
+      <div class="container">
+        <div class="main-heading">
+          <h2>About Us</h2>
+          <p>
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
+        </div>
+      </div>
+      <img
+        src="images/about.png"
+        alt=""
+        class="relative bottom-[-120px] mt-[-120px] max-w-full max-sm:bottom-[-60px] max-sm:mt-[-60px]"
+      />
     </div>
     <!-- End About -->
     <!-- Start Stats -->
-    <div class="stats">
-        <div class="container">
-            <div class="box">
-                <i class="fas fa-mug-hot"></i>
-                <div class="number">1.236</div>
-                <p>Coffee Drinks</p>
-            </div>
-            <div class="box">
-                <i class="far fa-folder"></i>
-                <div class="number">256</div>
-                <p>Completed Projects</p>
-            </div>
-            <div class="box">
-                <i class="fas fa-mug-hot"></i>
-                <div class="number">1,743</div>
-                <p>Mail Sent</p>
-            </div>
-            <div class="box">
-                <i class="fas fa-trophy"></i>
-                <div class="number">17</div>
-                <p>Awards Received</p>
-            </div>
+    <div
+      class="stats py-[var(--section-padding)] text-center bg-[url(./images/stats.png)] bg-cover relative"
+    >
+      <div class="container relative flex flex-wrap">
+        <div
+          class="text-white p-[50px] bg-[var(--transparent-color)] basis-full md:basis-1/2 lg:basis-1/4"
+        >
+          <i
+            class="fas fa-mug-hot w-[40px] h-[40px] !flex bg-black justify-center items-center rounded-full mx-auto mb-[30px]"
+          ></i>
+          <div class="number text-[50px] font-bold mb-[20px]">1.236</div>
+          <p class="text-[14px]">Coffee Drinks</p>
         </div>
+        <div
+          class="text-white p-[50px] bg-[var(--transparent-color)] basis-full md:basis-1/2 lg:basis-1/4"
+        >
+          <i
+            class="far fa-folder w-[40px] h-[40px] !flex bg-black justify-center items-center rounded-full mx-auto mb-[30px]"
+          ></i>
+          <div class="number text-[50px] font-bold mb-[20px]">256</div>
+          <p class="text-[14px]">Completed Projects</p>
+        </div>
+        <div
+          class="text-white p-[50px] bg-[var(--transparent-color)] basis-full md:basis-1/2 lg:basis-1/4"
+        >
+          <i
+            class="fas fa-mug-hot w-[40px] h-[40px] !flex bg-black justify-center items-center rounded-full mx-auto mb-[30px]"
+          ></i>
+          <div class="number text-[50px] font-bold mb-[20px]">1,743</div>
+          <p class="text-[14px]">Mail Sent</p>
+        </div>
+        <div
+          class="text-white p-[50px] bg-[var(--transparent-color)] basis-full md:basis-1/2 lg:basis-1/4"
+        >
+          <i
+            class="fas fa-trophy w-[40px] h-[40px] !flex bg-black justify-center items-center rounded-full mx-auto mb-[30px]"
+          ></i>
+          <div class="number text-[50px] font-bold mb-[20px]">17</div>
+          <p class="text-[14px]">Awards Received</p>
+        </div>
+      </div>
     </div>
     <!-- End Stats -->
     <!-- Start Skills -->
-    <div class="our-skills">
-        <div class="container">
-            <div class="testimonials">
-                <h3>Testimonials</h3>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                <div class="content">
-                    <img src="images/skills-01.jpg" alt="">
-                    <div class="text">Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.
-                    <p>John Doe, CEO</p>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="images/skills-02.jpg" alt="">
-                    <div class="text">Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.
-                        <p>John Doe, CEO</p>
-                    </div>
-                </div>
-                <ul class="bullets">
-                    <li></li>
-                    <li class="active"></li>
-                    <li></li>
-                </ul>
+    <div class="our-skills py-[var(--section-padding)]">
+      <div class="container flex justify-between flex-wrap">
+        <div class="testimonials md:basis-[45%]">
+          <h3 class="mb-[30px] font-normal text-center uppercase">
+            Testimonials
+          </h3>
+          <p class="text-[#777] leading-loose text-center mb-[60px]">
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
+          <div class="flex items-center mb-[30px] max-sm:flex-col text-center">
+            <img
+              src="images/skills-01.jpg"
+              alt=""
+              class="w-[100px] rounded-full mr-[50px] max-sm:mx-auto max-sm:mb-[20px]"
+            />
+            <div class="leading-[1.8] border-b border-b-[#ccc]">
+              Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+              Mauris blandit aliquet elit, eget tincidunt.
+              <p class="text-[#777] text-right text-[14px] mb-[10px]">
+                John Doe, CEO
+              </p>
             </div>
-            <div class="skills">
-                <h3>Skills</h3>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                <div class="prog-holder">
-                    <h4>Adobe</h4>
-                    <div class="prog">
-                        <span style="width: 90%" data-progress="90%"></span>
-                    </div>
-                </div>
-                <div class="prog-holder">
-                    <h4>Html &amp; Css</h4>
-                    <div class="prog">
-                        <span style="width: 85%" data-progress="85%"></span>
-                    </div>
-                </div>
-                <div class="prog-holder">
-                    <h4>JavaScript</h4>
-                    <div class="prog">
-                        <span style="width: 80%" data-progress="80%"></span>
-                    </div>
-                </div>
-                <div class="prog-holder">
-                    <h4>Php</h4>
-                    <div class="prog">
-                        <span style="width: 90%" data-progress="90%"></span>
-                    </div>
-                </div>
+          </div>
+          <div class="flex items-center mb-[30px] max-sm:flex-col text-center">
+            <img
+              src="images/skills-02.jpg"
+              alt=""
+              class="w-[100px] rounded-full mr-[50px] max-sm:mx-auto max-sm:mb-[20px]"
+            />
+            <div class="leading-[1.8] border-b border-b-[#ccc]">
+              Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+              Mauris blandit aliquet elit, eget tincidunt.
+              <p class="text-[#777] text-right text-[14px] mb-[10px]">
+                John Doe, CEO
+              </p>
             </div>
+          </div>
+          <ul class="bullets flex justify-center my-[50px]">
+            <li
+              class="w-[14px] h-[14px] border border-[#aaa] rounded-full mr-[10px] active-bullet"
+            ></li>
+            <li
+              class="active w-[14px] h-[14px] border border-[#aaa] rounded-full mr-[10px] active-bullet"
+            ></li>
+            <li
+              class="w-[14px] h-[14px] border border-[#aaa] rounded-full mr-[10px] active-bullet"
+            ></li>
+          </ul>
         </div>
+        <div class="skills md:basis-[45%]">
+          <h3 class="mb-[30px] font-normal text-center uppercase">Skills</h3>
+          <p class="text-[#777] leading-loose text-center mb-[60px]">
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
+          <div class="prog-holder mb-[40px]">
+            <h4 class="mb-[15px] font-normal uppercase">Adobe</h4>
+            <div class="prog bg-[#dedadc] h-[30px]">
+              <span
+                data-progress="90%"
+                class="block bg-[var(--main-color)] h-full relative w-[90%]"
+              ></span>
+            </div>
+          </div>
+          <div class="prog-holder mb-[40px]">
+            <h4 class="mb-[15px] font-normal uppercase">Html &amp; Css</h4>
+            <div class="prog bg-[#dedadc] h-[30px]">
+              <span
+                data-progress="85%"
+                class="block bg-[var(--main-color)] h-full relative w-[85%]"
+              ></span>
+            </div>
+          </div>
+          <div class="prog-holder mb-[40px]">
+            <h4 class="mb-[15px] font-normal uppercase">JavaScript</h4>
+            <div class="prog bg-[#dedadc] h-[30px]">
+              <span
+                data-progress="80%"
+                class="block bg-[var(--main-color)] h-full relative w-[80%]"
+              ></span>
+            </div>
+          </div>
+          <div class="prog-holder mb-[40px]">
+            <h4 class="mb-[15px] font-normal uppercase">Php</h4>
+            <div class="prog bg-[#dedadc] h-[30px]">
+              <span
+                data-progress="90%"
+                class="block bg-[var(--main-color)] h-full relative w-[90%]"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Skills -->
     <!-- Start Quote -->
-    <div class="quote">
-        <div class="container">
-            <q>accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</q>
-            <span>John Doe</span>
-        </div>
+    <div
+      class="quote py-[var(--section-padding)] bg-[url(./images/quote.jpg)] bg-cover relative text-center text-white"
+    >
+      <div class="container relative">
+        <q class="text-[30px] mb-[20px] block"
+          >accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet
+          elit, eget tincidunt.</q
+        >
+        <span>John Doe</span>
+      </div>
     </div>
     <!-- End Quote -->
     <!-- Start Pricing -->
-    <div class="pricing">
-        <div class="container">
-            <div class="main-heading">
-                <h2>Pricing</h2>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
-            <div class="plans">
-                <div class="plan">
-                    <div class="head">
-                        <h3>Basic</h3>
-                        <span>19</span>
-                    </div>
-                    <ul>
-                        <li>Feature No 1</li>
-                        <li>Extra Feature</li>
-                        <li>Extra Feature No 2</li>
-                        <li>Feature</li>
-                    </ul>
-                    <div class="foot">
-                        <a href="#">Buy Now</a>
-                    </div>
-                </div>
-                <div class="plan">
-                    <div class="head">
-                        <h3>Premium</h3>
-                        <span>29</span>
-                    </div>
-                    <ul>
-                        <li>Feature No 1</li>
-                        <li>Extra Feature</li>
-                        <li>Extra Feature No 2</li>
-                        <li>Feature</li>
-                    </ul>
-                    <div class="foot">
-                        <a href="#">Buy Now</a>
-                    </div>
-                </div>
-                <div class="plan">
-                    <div class="head">
-                        <h3>Pro</h3>
-                        <span>39</span>
-                    </div>
-                    <ul>
-                        <li>Feature No 1</li>
-                        <li>Extra Feature</li>
-                        <li>Extra Feature No 2</li>
-                        <li>Feature</li>
-                    </ul>
-                    <div class="foot">
-                        <a href="#">Buy Now</a>
-                    </div>
-                </div>
-                <div class="plan">
-                    <div class="head">
-                        <h3>Platinum</h3>
-                        <span>49</span>
-                    </div>
-                    <ul>
-                        <li>Feature No 1</li>
-                        <li>Extra Feature</li>
-                        <li>Extra Feature No 2</li>
-                        <li>Feature</li>
-                    </ul>
-                    <div class="foot">
-                        <a href="#">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <p class="contact-text">Contact us if you have special request</p>
-            <a href="#" class="contact-link">Contact Us</a>
+    <div class="pricing py-[var(--section-padding)]" id="pricing">
+      <div class="container">
+        <div class="main-heading">
+          <h2>Pricing</h2>
+          <p>
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
         </div>
+        <div
+          class="plans grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-[30px]"
+        >
+          <div class="plan bg-[#fcfcfc] text-center">
+            <div
+              class="head py-[40px] px-[20px] border-y border-y-[var(--main-color)]"
+            >
+              <h3 class="font-normal mb-[20px] uppercase">Basic</h3>
+              <span class="text-[60px] font-bold">19</span>
+            </div>
+            <ul class="list-none border-b border-b-[var(--main-color)]">
+              <li class="p-[20px] relative">Feature No 1</li>
+              <li class="p-[20px] relative">Extra Feature</li>
+              <li class="p-[20px] relative">Extra Feature No 2</li>
+              <li class="p-[20px] relative">Feature</li>
+            </ul>
+            <div class="foot">
+              <a
+                href="#"
+                class="block p-[20px] no-underline border border-[var(--main-color)] w-fit my-[30px] mx-auto"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+          <div class="plan bg-[#fcfcfc] text-center">
+            <div
+              class="head py-[40px] px-[20px] border-y border-y-[var(--main-color)]"
+            >
+              <h3 class="font-normal mb-[20px] uppercase">Premium</h3>
+              <span class="text-[60px] font-bold">29</span>
+            </div>
+            <ul class="list-none border-b border-b-[var(--main-color)]">
+              <li class="p-[20px] relative">Feature No 1</li>
+              <li class="p-[20px] relative">Extra Feature</li>
+              <li class="p-[20px] relative">Extra Feature No 2</li>
+              <li class="p-[20px] relative">Feature</li>
+            </ul>
+            <div class="foot">
+              <a
+                href="#"
+                class="block p-[20px] no-underline border border-[var(--main-color)] w-fit my-[30px] mx-auto"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+          <div class="plan bg-[#fcfcfc] text-center">
+            <div
+              class="head py-[40px] px-[20px] border-y border-y-[var(--main-color)]"
+            >
+              <h3 class="font-normal mb-[20px] uppercase">Pro</h3>
+              <span class="text-[60px] font-bold">39</span>
+            </div>
+            <ul class="list-none border-b border-b-[var(--main-color)]">
+              <li class="p-[20px] relative">Feature No 1</li>
+              <li class="p-[20px] relative">Extra Feature</li>
+              <li class="p-[20px] relative">Extra Feature No 2</li>
+              <li class="p-[20px] relative">Feature</li>
+            </ul>
+            <div class="foot">
+              <a
+                href="#"
+                class="block p-[20px] no-underline border border-[var(--main-color)] w-fit my-[30px] mx-auto"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+          <div class="plan bg-[#fcfcfc] text-center">
+            <div
+              class="head py-[40px] px-[20px] border-y border-y-[var(--main-color)]"
+            >
+              <h3 class="font-normal mb-[20px] uppercase">Platinum</h3>
+              <span class="text-[60px] font-bold">49</span>
+            </div>
+            <ul class="list-none border-b border-b-[var(--main-color)]">
+              <li class="p-[20px] relative">Feature No 1</li>
+              <li class="p-[20px] relative">Extra Feature</li>
+              <li class="p-[20px] relative">Extra Feature No 2</li>
+              <li class="p-[20px] relative">Feature</li>
+            </ul>
+            <div class="foot">
+              <a
+                href="#"
+                class="block p-[20px] no-underline border border-[var(--main-color)] w-fit my-[30px] mx-auto"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-[50px] mx-auto mb-[20px] text-[20px]">
+          Contact us if you have special request
+        </p>
+        <a
+          href="#"
+          class="block w-fit my-[20px] mx-auto !bg-[var(--main-color)] text-white py-[15px] px-[30px] no-underline"
+          >Contact Us</a
+        >
+      </div>
     </div>
     <!-- End Pricing -->
     <!-- Start Subscribe -->
-    <div class="subscribe">
-        <div class="container">
-            <form action="">
-                <i class="far fa-envelope fa-lg"></i>
-                <input type="email" name="mail" placeholder="Your Email">
-                <input type="submit" value="Subscribe">
-            </form>
-            <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blan dit aliquet elit, eget tincidunt.</p>
-        </div>
+    <div
+      class="subscribe py-[var(--section-padding)] bg-[url(./images/subscribe.jpg)] bg-cover relative text-white"
+    >
+      <div class="container relative flex items-center max-lg:flex-col">
+        <form action="" class="flex relative w-[500px] max-w-full">
+          <i
+            class="far fa-envelope fa-lg absolute top-1/2 transform -translate-y-1/2 left-[25px]"
+          ></i>
+          <input
+            type="email"
+            name="mail"
+            placeholder="Your Email"
+            class="placeholder-white focus:outline-none border border-white border-r-0 bg-none py-[20px] pr-[20px] pl-[60px] caret-[var(--main-color)] w-[calc(100%-130px)]"
+          />
+          <input
+            type="submit"
+            value="Subscribe"
+            class="focus-outline-none w-[130px] bg-[var(--main-color)] text-white py-[10px] px-[20px] border border-white border-l-0 uppercase"
+          />
+        </form>
+        <p class="leading-loose ml-[50px] max-lg:mt-[30px] max-lg:text-center">
+          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+          Mauris blan dit aliquet elit, eget tincidunt.
+        </p>
+      </div>
     </div>
     <!-- End Subscribe -->
     <!-- Start Contact -->
-    <div class="contact">
-        <div class="container">
-            <div class="main-heading">
-                <h2>Contact Us</h2>
-                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-            </div>
-            <div class="content">
-                <form action="">
-                    <input class="main-input" type="text" name="name" placeholder="Your Name">
-                    <input class="main-input" type="email" name="mail" placeholder="Your Email">
-                    <textarea class="main-input" name="message" placeholder="Your Message"></textarea>
-                    <input type="submit" value="Send Message">
-                </form>
-                <div class="info">
-                    <h4>Get In Touch</h4>
-                    <span class="phone">+00 123.456.789</span>
-                    <span class="phone">+00 123.456.789</span>
-                    <h4>Where We Are</h4>
-                    <address>
-                        Awesome Address 17<br>New York, NYC<br>123-4567-890<br>USA
-                    </address>
-                </div>
-            </div>
+    <div class="contact py-[var(--section-padding)]" id="contact">
+      <div class="container">
+        <div class="main-heading">
+          <h2>Contact Us</h2>
+          <p>
+            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            Mauris blandit aliquet elit, eget tincidunt.
+          </p>
         </div>
+        <div class="flex justify-between max-sm:flex-col">
+          <form action="" class="basis-[70%]">
+            <input
+              class="focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+            />
+            <input
+              class="focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
+              type="email"
+              name="mail"
+              placeholder="Your Email"
+            />
+            <textarea
+              class="h-[200px] focus:outline-none p-[20px] block border border-[#ccc] !mb-[30px] w-full"
+              name="message"
+              placeholder="Your Message"
+            ></textarea>
+            <input
+              type="submit"
+              value="Send Message"
+              class="bg-[var(--main-color)] text-white p-[20px] border-none flex !ml-auto uppercase cursor-pointer max-sm:!mr-auto"
+            />
+          </form>
+          <div class="basis-1/4 max-sm:order-first max-sm:text-center">
+            <h4 class="uppercase mb-[30px] font-medium text-[18px]">
+              Get In Touch
+            </h4>
+            <span class="block text-[#777] mb-[10px]">+00 123.456.789</span>
+            <span class="block text-[#777] mb-[10px]">+00 123.456.789</span>
+            <h4
+              class="uppercase mb-[30px] font-medium text-[18px] mt-[90px] max-sm:mt-[30px]"
+            >
+              Where We Are
+            </h4>
+            <address class="text-[#777] leading-loose max-sm:mb-[40px]">
+              Awesome Address 17<br />New York, NYC<br />123-4567-890<br />USA
+            </address>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Contact -->
     <!-- Start Footer -->
-    <div class="footer">
-        <div class="container">
-            <img src="images/logo.png" alt="Logo">
-            <p>We Are Social</p>
-            <div class="social-icons">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fas fa-home"></i>
-                <i class="fab fa-linkedin"></i>
-            </div>
-            <p class="copyright">&copy; 2022 <span>Kasper</span> All Right Reserved</p>
+    <div
+      class="footer py-[calc(var(--section-padding)/2)] bg-[url(./images/subscribe.jpg)] bg-cover relative text-white text-center"
+    >
+      <div class="container relative">
+        <img src="images/logo.png" alt="Logo" class="mb-[20px]" />
+        <p
+          class="uppercase p-[20px] border-b border-b-white text-[22px] w-fit my-[20px] mx-auto"
+        >
+          We Are Social
+        </p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f py-[10px] px-[15px]"></i>
+          <i class="fab fa-twitter py-[10px] px-[15px]"></i>
+          <i class="fas fa-home py-[10px] px-[15px]"></i>
+          <i class="fab fa-linkedin py-[10px] px-[15px]"></i>
         </div>
+        <p class="copyright mt-[60px]">
+          &copy; 2022
+          <span class="font-bold text-[var(--main-color)]">Kasper</span> All
+          Right Reserved
+        </p>
+      </div>
     </div>
     <!-- End Footer -->
-</body>
+  </body>
 </html>
